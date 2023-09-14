@@ -1,0 +1,37 @@
+.main_logo{
+    width: 150px;
+}
+
+.navigation-menu {
+    display: flex;
+}
+
+.navigation-menu ul{
+    display: flex;
+    gap: 20px;
+}
+
+.navigation-menu ul li {
+    margin-top: 1rem;
+}
+
+.navigation-menu li a {
+    text-decoration: none;
+    color: white;
+}
+span.cart-total-item {
+    background: white;
+    border-radius: 35px;
+    color: black;
+    padding: 5px 5px 5px 5px;
+    font-size: 9px;
+    top: 15px;
+    font-weight: bold;
+    width: 1.5rem;
+    position: absolute;
+    text-align: center;
+}
+svg.cart-trolley {
+    position: relative;
+    font-size: 1.2rem;
+}
