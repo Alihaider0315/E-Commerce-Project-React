@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import './header.css'
 import { FiShoppingCart } from "react-icons/fi";
+import { useMyContext } from '../../Context';
 
 const Navigation = () => {
+  const {cart} = useMyContext();
   return (
     <nav className='navigation-menu'>
       <ul>
@@ -23,7 +25,7 @@ const Navigation = () => {
         <li>
           <NavLink to="/cart">
           <FiShoppingCart className='cart-trolley'/>
-          <span className='cart-total-item'>10</span>
+          <span className='cart-total-item'>{cart.length || "0" }</span>
           </NavLink>
         </li>
       </ul>
@@ -33,20 +35,3 @@ const Navigation = () => {
 
 export default Navigation;
 
-// Ask With Sir 
-// import { NavLink } from 'react-bootstrap';
-// import Nav from 'react-bootstrap/Nav';
-
-// const Navigation = () => {
-//   return (
-//   <Nav className="mr-auto">
-//     <NavLink to="/">Home</NavLink>
-//     <NavLink to="/about">About Us</NavLink>
-//     <NavLink to="/products">Products</NavLink>
-//     <NavLink to="/contact">Contact</NavLink>
-    
-//   </Nav>
-//   )
-// }
-
-// export default Navigation
