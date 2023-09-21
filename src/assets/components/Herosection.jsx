@@ -1,21 +1,20 @@
-  import React, { useEffect, useState } from 'react'
+  import React, { useContext, useEffect, useState } from 'react'
   import Button from 'react-bootstrap/Button';
   import Card from 'react-bootstrap/Card';
-  import axios from 'axios'
   import { Container, Row } from 'react-bootstrap';
-  import { useMyContext } from '../../Context';
+  import { CartItemsContext } from '../../Context';
+import { Link } from 'react-router-dom';
 
   const Herosection = () => {
 
-    const {cart , setCart} = useMyContext();
-    function addToCart(data){
-      setCart([...cart , data]);
-    }
-    const [myData , setMyData] = useState([]);
+    const {incrementQuantity , fetchproduct , myData} = useContext(CartItemsContext)
 
+    const addToCartHandler = () => {
+      incrementQuantity();
+    }
+    
     useEffect(()=>{
-      axios.get("https://api.pujakaitem.com/api/products")
-      .then((res) => setMyData(res.data));
+      fetchproduct();
     },[]);
     return (
 
@@ -23,13 +22,14 @@
         <Row className="justify-content-center gap-3">
           {myData.map((post) => {
             const { id, name, description, image } = post;
+            // let titleSlug = name.replace(/\s+/g, '-').toLowerCase();
             return (
               <Card style={{ width: '18rem' }} key={id}>
                 <Card.Img variant="top" src={image} />
                 <Card.Body>
-                  <Card.Title>{name}</Card.Title>
+                  <Link to={`/Singleproduct/${id}`}><Card.Title>{name}</Card.Title></Link>
                   <Card.Text>{description}</Card.Text>
-                  <Button onClick={addToCart} variant="primary">Add To Cart</Button>
+                  <Button onClick={addToCartHandler} variant="primary">Add To Cart</Button>
                 </Card.Body>
               </Card>
             );

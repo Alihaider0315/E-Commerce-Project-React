@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom';
 import './header.css'
 import { FiShoppingCart } from "react-icons/fi";
-import { useMyContext } from '../../Context';
+import { useContext } from 'react';
+import { CartItemsContext } from '../../Context';
 
 const Navigation = () => {
-  const {cart} = useMyContext();
+  const {itemsQuantity} = useContext(CartItemsContext)
   return (
     <nav className='navigation-menu'>
       <ul>
@@ -25,7 +26,7 @@ const Navigation = () => {
         <li>
           <NavLink to="/cart">
           <FiShoppingCart className='cart-trolley'/>
-          <span className='cart-total-item'>{cart.length || "0" }</span>
+          <span className='cart-total-item'>{itemsQuantity}</span>
           </NavLink>
         </li>
       </ul>

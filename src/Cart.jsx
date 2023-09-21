@@ -1,10 +1,10 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import { Container, Row } from 'react-bootstrap';
-import { useMyContext } from './Context';
+// import { useMyContext } from './Context';
 
 const Cart = () => {
-  const { cart } = useMyContext();
+  // const { cart } = useMyContext();
   return (
     <Container className='mt-5'>
       <Row className="justify-content-center gap-3">
